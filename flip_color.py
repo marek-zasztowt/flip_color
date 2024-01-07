@@ -1,5 +1,5 @@
 import pygame
-import random
+import time
 import os
 
 # import sys
@@ -106,7 +106,6 @@ pygame.init()
 screen = pygame.display.set_mode(DISPLAY_SIZE)
 screen.fill(BACK_COLOR)
 pygame.display.set_caption('Change color !!!')
-clock = pygame.time.Clock()
 draw_borders()
 squares = [[0 for x in range(modules_x) ] for y in range(modules_y)]
 status_left_button = False
@@ -114,6 +113,7 @@ status_right_button = False
 mouse_button = 0
 key_shift = False
 running = True
+max_suma = modules_x * modules_y
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -170,11 +170,14 @@ while running:
             suma = 0
             for square in squares:
                 suma += sum(square)
-            if suma == modules_x * modules_y:
+            if suma == max_suma:
+                pygame.display.set_caption('*** GAME OVER ***')
+                pygame.display.flip()
                 print("\nGame over !!!")
+                time.sleep(5)
+                running = False
         mouse_button = 0
-# jak wszystko to komunikat (i natępny level ?)
     pygame.display.flip()
-    clock.tick(30)
 pygame.quit()
+
 # sys.exit()
