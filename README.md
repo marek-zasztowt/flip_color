@@ -1,4 +1,4 @@
-Goal is change color for all squares !!!
+# Goal is change color for all squares !!!
 
 Game nawigation
 
